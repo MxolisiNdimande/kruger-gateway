@@ -1,0 +1,146 @@
+/* WildlifeSightings.css - Minimal version */
+.wildlife-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.wildlife-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wildlife-header h1 {
+  color: #2d5016;
+  margin-bottom: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #555;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.nav a.active {
+  background: #2d5016;
+  color: white;
+}
+
+.loading-state, .error-state {
+  text-align: center;
+  padding: 40px;
+}
+
+.filter-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.sightings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.sighting-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  border: 1px solid #e9ecef;
+}
+
+.sighting-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.sighting-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.animal-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.animal-name {
+  margin: 0;
+  color: #2d5016;
+}
+
+.probability-bar {
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.probability-text {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.detail-label {
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  grid-column: 1 / -1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sightings-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+}
