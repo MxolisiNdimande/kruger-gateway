@@ -7,6 +7,7 @@ const Dashboard = () => {
   const [stats, setStats] = useState({ gates: 0, sightings: 0, animals: 0, accommodations: 0 });
   const [sightings, setSightings] = useState([]);
   const [featuredAccommodations, setFeaturedAccommodations] = useState([]);
+  const [tourismStats, setTourismStats] = useState({ destinations: 8, activities: 12, businesses: 6 }); // Add tourism stats
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -119,7 +120,7 @@ const Dashboard = () => {
         </div>
       </header>
 
-      {/* Navigation */}
+      {/* Navigation - ADD TOURISM LINK */}
       <nav className="dashboard-nav">
         <Link to="/wildlife" className="nav-card wildlife-card">
           <span className="nav-icon">🐘</span>
@@ -129,13 +130,17 @@ const Dashboard = () => {
           <span className="nav-icon">🏨</span>
           <span className="nav-text">Accommodations</span>
         </Link>
+        <Link to="/tourism" className="nav-card tourism-card"> {/* NEW TOURISM CARD */}
+          <span className="nav-icon">🏞️</span>
+          <span className="nav-text">Mpumalanga Tourism</span>
+        </Link>
         <div className="nav-card stats-card">
           <span className="nav-icon">📊</span>
           <span className="nav-text">Live Dashboard</span>
         </div>
       </nav>
 
-      {/* Stats Overview */}
+      {/* Stats Overview - ADD TOURISM STATS */}
       <section className="stats-section">
         <h2>📊 Park Overview</h2>
         <div className="stats-grid">
@@ -168,6 +173,23 @@ const Dashboard = () => {
             <div className="stat-content">
               <h3>{stats.accommodations}</h3>
               <p>Accommodations</p>
+            </div>
+          </div>
+
+          {/* NEW TOURISM STATS */}
+          <div className="stat-card">
+            <div className="stat-icon">🏞️</div>
+            <div className="stat-content">
+              <h3>{tourismStats.destinations}</h3>
+              <p>Destinations</p>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-icon">🎯</div>
+            <div className="stat-content">
+              <h3>{tourismStats.activities}</h3>
+              <p>Activities</p>
             </div>
           </div>
         </div>
@@ -265,7 +287,74 @@ const Dashboard = () => {
           </div>
         </section>
 
-        {/* Quick Actions */}
+        {/* NEW MPUMALANGA TOURISM SECTION */}
+        <section className="mpumalanga-tourism-preview">
+          <div className="section-header">
+            <h2>🏞️ Mpumalanga Tourism</h2>
+            <Link to="/tourism" className="view-all-link">
+              Explore All →
+            </Link>
+          </div>
+          
+          <div className="tourism-highlights">
+            <div className="tourism-card">
+              <div className="tourism-icon">🦁</div>
+              <div className="tourism-content">
+                <h4>Kruger National Park</h4>
+                <p>World-renowned safari destination with Big Five sightings</p>
+                <div className="tourism-features">
+                  <span className="feature-tag">Safari</span>
+                  <span className="feature-tag">Wildlife</span>
+                  <span className="feature-tag">Big Five</span>
+                </div>
+                <Link to="/tourism" className="tourism-link">
+                  Explore Kruger →
+                </Link>
+              </div>
+            </div>
+
+            <div className="tourism-card">
+              <div className="tourism-icon">🌄</div>
+              <div className="tourism-content">
+                <h4>Panorama Route</h4>
+                <p>Breathtaking viewpoints including God's Window and Blyde Canyon</p>
+                <div className="tourism-features">
+                  <span className="feature-tag">Scenic</span>
+                  <span className="feature-tag">Viewpoints</span>
+                  <span className="feature-tag">Photography</span>
+                </div>
+                <Link to="/tourism" className="tourism-link">
+                  Discover Scenery →
+                </Link>
+              </div>
+            </div>
+
+            <div className="tourism-card">
+              <div className="tourism-icon">🌺</div>
+              <div className="tourism-content">
+                <h4>Spring Activities</h4>
+                <p>Seasonal adventures including wildflower tours and bird watching</p>
+                <div className="tourism-features">
+                  <span className="feature-tag">Seasonal</span>
+                  <span className="feature-tag">Adventure</span>
+                  <span className="feature-tag">Nature</span>
+                </div>
+                <Link to="/tourism" className="tourism-link">
+                  View Activities →
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="tourism-cta">
+            <p>🌿 <strong>Complete Your Safari Experience</strong> - Combine wildlife tracking with tourism destinations</p>
+            <Link to="/tourism" className="cta-button">
+              Build My Mpumalanga Itinerary
+            </Link>
+          </div>
+        </section>
+
+        {/* Quick Actions - ADD TOURISM ACTION */}
         <section className="quick-actions">
           <h2>⚡ Quick Actions</h2>
           <div className="actions-grid">
@@ -277,6 +366,11 @@ const Dashboard = () => {
             <Link to="/accommodations" className="action-card">
               <span className="action-icon">🏨</span>
               <span className="action-text">Find Stays</span>
+            </Link>
+
+            <Link to="/tourism" className="action-card"> {/* NEW TOURISM ACTION */}
+              <span className="action-icon">🏞️</span>
+              <span className="action-text">Explore Tourism</span>
             </Link>
             
             <a 
@@ -312,6 +406,8 @@ const Dashboard = () => {
           <span>{new Date().toLocaleDateString()}</span>
           <span>•</span>
           <span>Data updates automatically</span>
+          <span>•</span>
+          <Link to="/tourism">🏞️ Mpumalanga Tourism</Link> {/* ADD TOURISM LINK */}
         </div>
       </footer>
     </div>

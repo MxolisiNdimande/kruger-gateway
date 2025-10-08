@@ -453,3 +453,178 @@
     grid-template-columns: 1fr;
   }
 }
+/* Add to your existing Dashboard.css */
+
+/* Tourism Navigation Card */
+.nav-card.tourism-card {
+  background: linear-gradient(135deg, #2e8b57 0%, #1b5e20 100%);
+  color: white;
+}
+
+.nav-card.tourism-card:hover {
+  background: linear-gradient(135deg, #34a56d 0%, #217a3c 100%);
+  transform: translateY(-2px);
+}
+
+/* Tourism Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* Mpumalanga Tourism Preview Section */
+.mpumalanga-tourism-preview {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid #e9ecef;
+}
+
+.tourism-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tourism-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #2e8b57;
+}
+
+.tourism-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.tourism-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tourism-content h4 {
+  color: #2c5aa0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.tourism-content p {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.tourism-features {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.feature-tag {
+  background: #e9ecef;
+  padding: 0.3rem 0.7rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: #495057;
+}
+
+.tourism-link {
+  color: #2e8b57;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.tourism-link:hover {
+  color: #1b5e20;
+  gap: 0.7rem;
+}
+
+/* Tourism CTA */
+.tourism-cta {
+  background: linear-gradient(135deg, #2c5aa0 0%, #1e3a8a 100%);
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tourism-cta p {
+  margin: 0;
+  flex: 1;
+  min-width: 250px;
+}
+
+.cta-button {
+  background: #d4af37;
+  color: #2c3e50;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cta-button:hover {
+  background: #e6b800;
+  transform: translateY(-2px);
+}
+
+/* Footer Tourism Link */
+.footer-links a {
+  color: #2e8b57;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tourism-highlights {
+    grid-template-columns: 1fr;
+  }
+  
+  .tourism-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .mpumalanga-tourism-preview {
+    padding: 1rem;
+  }
+  
+  .tourism-card {
+    padding: 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

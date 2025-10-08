@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './WildlifeSightings.css';
 
 const WildlifeSightings = () => {
   const [sightings, setSightings] = useState([]);
@@ -49,7 +50,7 @@ const WildlifeSightings = () => {
 
   if (loading) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center' }}>
+      <div className="wildlife-loading">
         <h1>🐘 Wildlife Sightings</h1>
         <p>Loading...</p>
       </div>
@@ -58,113 +59,86 @@ const WildlifeSightings = () => {
 
   if (error) {
     return (
-      <div style={{ padding: '20px', textAlign: 'center' }}>
+      <div className="wildlife-error">
         <h1>🐘 Wildlife Sightings</h1>
-        <p style={{ color: 'red' }}>{error}</p>
-        <button onClick={fetchWildlifeData}>Try Again</button>
+        <p className="error-message">{error}</p>
+        <button onClick={fetchWildlifeData} className="retry-button">Try Again</button>
       </div>
     );
   }
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
-      <header style={{ textAlign: 'center', marginBottom: '30px' }}>
-        <h1 style={{ color: '#2d5016' }}>🐘 Kruger Park Wildlife Sightings</h1>
+    <div className="wildlife-container">
+      <header className="wildlife-header">
+        <h1>🐘 Kruger Park Wildlife Sightings</h1>
         <p>Real-time animal sightings from across the park</p>
       </header>
 
-      <nav style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        gap: '20px', 
-        marginBottom: '30px',
-        padding: '15px',
-        background: '#f8f9fa',
-        borderRadius: '10px'
-      }}>
-        <Link to="/">📊 Dashboard</Link>
-        <Link 
-          to="/wildlife" 
-          style={{ 
-            background: '#2d5016', 
-            color: 'white', 
-            padding: '10px 20px', 
-            borderRadius: '5px',
-            textDecoration: 'none'
-          }}
-        >
-          🐘 Wildlife
+      {/* Quick Navigation Buttons */}
+      <div className="quick-nav">
+        <Link to="/" className="quick-nav-button">
+          ← Back to Dashboard
         </Link>
-        <Link to="/accommodations" style={{ textDecoration: 'none', color: '#555' }}>
+        <Link to="/wildlife" className="quick-nav-button active">
+          🐘 Wildlife Sightings
+        </Link>
+        <Link to="/accommodations" className="quick-nav-button">
           🏨 Accommodations
         </Link>
-      </nav>
+        <Link to="/tourism" className="quick-nav-button">
+          🌄 Tourism
+        </Link>
+      </div>
 
-      <div style={{ 
-        background: '#f8f9fa', 
-        padding: '20px', 
-        borderRadius: '12px', 
-        marginBottom: '30px' 
-      }}>
+     
+      <div className="sightings-summary">
         <h3>🔍 Found {filteredSightings.length} Sightings</h3>
         <p>Data loaded from backend API</p>
       </div>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-        gap: '20px' 
-      }}>
+      <div className="sightings-grid">
         {filteredSightings.map(sighting => (
           <div
             key={sighting.id}
-            style={{
-              background: 'white',
-              borderRadius: '12px',
-              padding: '20px',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-              border: '1px solid #e9ecef'
-            }}
+            className="sighting-card"
           >
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px' }}>
-              <div style={{ fontSize: '2rem', marginRight: '15px' }}>
+            <div className="sighting-header">
+              <div className="animal-icon">
                 {getAnimalIcon(sighting.animal_type)}
               </div>
-              <div>
-                <h3 style={{ margin: 0, color: '#2d5016' }}>{sighting.animal_type}</h3>
+              <div className="animal-info">
+                <h3>{sighting.animal_type}</h3>
                 <small>{sighting.confidence}</small>
               </div>
             </div>
 
-            <div style={{ marginBottom: '15px' }}>
+            <div className="probability-indicator">
               <div 
+                className="probability-bar"
                 style={{ 
-                  height: '6px',
-                  borderRadius: '3px',
                   backgroundColor: getProbabilityColor(sighting.probability),
                   width: sighting.probability === 'high' ? '100%' : 
                          sighting.probability === 'medium' ? '66%' : '33%',
-                  marginBottom: '5px'
                 }}
               ></div>
-              <span style={{ fontSize: '0.8rem', color: '#666' }}>
+              <span className="probability-text">
                 {sighting.probability} probability
               </span>
             </div>
 
-            <div>
-              <div style={{ display: 'flex', marginBottom: '8px' }}>
-                <span style={{ fontWeight: '600', minWidth: '80px' }}>📍 Gate:</span>
-                <span>{sighting.gate_name || 'Unknown'}</span>
+            <div className="sighting-details">
+              <div className="detail-row">
+                <span className="detail-label">📍 Gate:</span>
+                <span className="detail-value">{sighting.gate_name || 'Unknown'}</span>
               </div>
-              <div style={{ display: 'flex', marginBottom: '8px' }}>
-                <span style={{ fontWeight: '600', minWidth: '80px' }}>🕒 Time:</span>
-                <span>{new Date(sighting.created_at).toLocaleString()}</span>
+              <div className="detail-row">
+                <span className="detail-label">🕒 Time:</span>
+                <span className="detail-value">{new Date(sighting.created_at).toLocaleString()}</span>
               </div>
               {sighting.notes && (
-                <div style={{ display: 'flex' }}>
-                  <span style={{ fontWeight: '600', minWidth: '80px' }}>📝 Notes:</span>
-                  <span style={{ fontStyle: 'italic' }}>{sighting.notes}</span>
+                <div className="detail-row">
+                  <span className="detail-label">📝 Notes:</span>
+                  <span className="detail-value notes">{sighting.notes}</span>
                 </div>
               )}
             </div>

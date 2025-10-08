@@ -1,146 +1,371 @@
-/* WildlifeSightings.css - Minimal version */
+/* WildlifeSightings.css */
 .wildlife-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  width: 100vw;
+  margin: 0;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.wildlife-loading,
+.wildlife-error {
+  padding: 2rem;
+  text-align: center;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wildlife-error .error-message {
+  color: #dc3545;
+  margin: 1rem 0;
+}
+
+.retry-button {
+  background: #2d5016;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  margin-top: 1rem;
 }
 
 .wildlife-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  padding: 1rem;
 }
 
 .wildlife-header h1 {
   color: #2d5016;
-  margin-bottom: 10px;
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
 }
 
-.nav {
+.wildlife-header p {
+  margin: 0;
+  color: #666;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+.wildlife-nav {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-  padding: 15px;
-  background: #f8f9fa;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: white;
   border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
 }
 
-.nav a {
+.nav-link {
   text-decoration: none;
   color: #555;
-  padding: 10px 20px;
+  padding: 0.7rem 1.2rem;
   border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  white-space: nowrap;
 }
 
-.nav a.active {
+.nav-link.active {
   background: #2d5016;
   color: white;
 }
 
-.loading-state, .error-state {
-  text-align: center;
-  padding: 40px;
+.nav-link:hover {
+  background: #4a7c2a;
+  color: white;
 }
 
-.filter-section {
-  background: #f8f9fa;
-  padding: 20px;
+.sightings-summary {
+  background: white;
+  padding: 1.5rem;
   border-radius: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-.search-input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 15px;
+.sightings-summary h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2d5016;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
 }
 
-.filter-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.filter-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+.sightings-summary p {
+  margin: 0;
+  color: #666;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .sightings-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+  width: 100%;
 }
 
 .sighting-card {
   background: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  cursor: pointer;
   border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .sighting-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
 }
 
 .sighting-header {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
+  gap: 1rem;
 }
 
 .animal-icon {
-  font-size: 2rem;
-  margin-right: 15px;
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  flex-shrink: 0;
 }
 
-.animal-name {
-  margin: 0;
+.animal-info h3 {
+  margin: 0 0 0.3rem 0;
   color: #2d5016;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  line-height: 1.3;
+}
+
+.animal-info small {
+  color: #666;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+}
+
+.probability-indicator {
+  margin-bottom: 1rem;
 }
 
 .probability-bar {
   height: 6px;
   border-radius: 3px;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .probability-text {
-  font-size: 0.8rem;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
   color: #666;
+}
+
+.sighting-details {
+  width: 100%;
 }
 
 .detail-row {
   display: flex;
-  margin-bottom: 8px;
+  margin-bottom: 0.7rem;
+  gap: 0.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .detail-label {
   font-weight: 600;
-  min-width: 80px;
+  min-width: 70px;
+  color: #333;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  white-space: nowrap;
 }
 
-.no-results {
-  text-align: center;
-  padding: 40px;
-  grid-column: 1 / -1;
+.detail-value {
+  color: #555;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  flex: 1;
+  word-break: break-word;
 }
 
-/* Responsive */
+.detail-value.notes {
+  font-style: italic;
+  color: #666;
+}
+
+/* Mobile-specific styles */
 @media (max-width: 768px) {
-  .sightings-grid {
-    grid-template-columns: 1fr;
+  .wildlife-container {
+    padding: 0.5rem;
   }
   
-  .filter-grid {
+  .wildlife-nav {
+    gap: 0.5rem;
+    padding: 0.8rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .sighting-card {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+  
+  .sighting-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  .detail-label {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .sightings-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .wildlife-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+  }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sightings-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .wildlife-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .sighting-card:hover {
+    transform: none;
+  }
+  
+  .nav-link:hover {
+    background: transparent;
+    color: #555;
+  }
+  
+  .nav-link.active:hover {
+    background: #2d5016;
+    color: white;
+  }
+}
+/* Add to WildlifeSightings.css */
+.quick-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto 2rem auto;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
+.quick-nav-button {
+  background: #f8f9fa;
+  color: #333;
+  text-decoration: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid #dee2e6;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quick-nav-button.active {
+  background: #2d5016;
+  color: white;
+  border-color: #2d5016;
+}
+
+.quick-nav-button:hover {
+  background: #2d5016;
+  color: white;
+  border-color: #2d5016;
+  transform: translateY(-2px);
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+  .quick-nav {
+    gap: 0.5rem;
+    margin: 1rem auto;
+  }
+  
+  .quick-nav-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .quick-nav-button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .quick-nav-button:hover {
+    background: #f8f9fa;
+    color: #333;
+    border-color: #dee2e6;
+    transform: none;
+  }
+  
+  .quick-nav-button.active:hover {
+    background: #2d5016;
+    color: white;
   }
 }
